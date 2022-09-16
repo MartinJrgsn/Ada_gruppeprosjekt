@@ -18,6 +18,9 @@ project Display_Letters is
       for Program_Host use ":1234";
       for Communication_Protocol use "remote";
       for Connection_Tool use "pyocd";
+      for Vcs_Kind use "git";
+      for Vcs_Repository_Root use "../../Ada_gruppeprosjekt";
    end Ide;
 
 end Display_Letters;
+
