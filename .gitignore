@@ -8,15 +8,15 @@
 
 *.exe
 
-DisplayLetters/obj/b__main.adb
-DisplayLetters/obj/b__main.ads
-DisplayLetters/obj/display_letters-loc.xml
-DisplayLetters/obj/gpsauto.cgpr
-DisplayLetters/obj/main
-DisplayLetters/obj/main.adb.stderr
-DisplayLetters/obj/main.adb.stdout
-DisplayLetters/obj/main.bexch
-DisplayLetters/obj/main.bin
-DisplayLetters/obj/main.exe
-DisplayLetters/obj/map.txt
+b__main.adb
+b__main.ads
+display_letters-loc.xml
+gpsauto.cgpr
+main
+main.adb.stderr
+main.adb.stdout
+main.bexch
+main.bin
+main.exe
+map.txt
 #DisplayLetters/src/main.adb
