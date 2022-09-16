@@ -7,7 +7,7 @@ begin
    loop
       Put_Line ("Serial: Hello Ravenscar!"); -- open a serial port to see this message
 
-      Scroll_Text("HEYHEY"); --what happens if we have a longer text?
+      Scroll_Text("VE3030"); --what happens if we have a longer text?
 
       delay until Clock + Milliseconds (1000);
    end loop;
