@@ -16,4 +16,4 @@ The different lighting functions can be illustrated using four RGB diodes.
 - Sensors:
 	- Proximity
 	- Ultrasonic
-	- 
+	- Test
