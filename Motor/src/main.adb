@@ -11,6 +11,7 @@ procedure Main is
    PIN_ENB : constant Pin_Id := 0;
    PIN_IN3 : constant Pin_Id := 1;
    PIN_IN4 : constant Pin_Id := 2;
+
 begin
 
    loop
