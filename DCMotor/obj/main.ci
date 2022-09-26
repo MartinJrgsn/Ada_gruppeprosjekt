@@ -1,0 +1,7 @@
+graph: { title: "C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb"
+node: { title: "_ada_main" label: "Main\nC:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb:3:1\n16 bytes (static)" }
+node: { title: "microbit__ios__write" label: "Write\nC:\repos\VE3140\Ada_Drivers_Library\boards\MicroBit_v2\src\zfp\microbit-ios.ads:64:14" shape : ellipse }
+edge: { sourcename: "_ada_main" targetname: "microbit__ios__write" label: "C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb:10:7" }
+edge: { sourcename: "_ada_main" targetname: "microbit__ios__write" label: "C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb:11:7" }
+edge: { sourcename: "_ada_main" targetname: "microbit__ios__write" label: "C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb:12:7" }
+}
