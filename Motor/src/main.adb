@@ -22,11 +22,31 @@ procedure Main is
 begin
 
    loop
+      --Setting direction
+      --Motor 1
       Write (PIN_IN1, 0);
       Write (PIN_IN2, 1023);
-      for Value in Analog_Value range 370 .. 1023 loop
-         Write (PIN_ENA, Value);
-         MicroBit.Time.Delay_Ms (20);
-         end loop;
+      --Motor 2
+      Write (PIN_IN3, 0);
+      Write (PIN_IN4, 1023);
+      --Motor 3
+      Write (PIN_IN5, 0);
+      Write (PIN_IN6, 1023);
+      --Motor 4
+      Write (PIN_IN7, 0);
+      Write (PIN_IN8, 1023);
+
+
+
+
+
+
+      --FOR LOOP FOR INCREASING PWM VALUE
+      --for Value in Analog_Value range 370 .. 1023 loop
+        -- Write (PIN_ENA, Value);
+         --MicroBit.Time.Delay_Ms (20);
+        --end loop;
+
+
    end loop;
 end Main;
