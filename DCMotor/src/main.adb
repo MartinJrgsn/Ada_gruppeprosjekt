@@ -20,11 +20,11 @@ procedure Main is
    PIN_IN8 : constant Pin_Id := 20;
 
    --Options
-   Speed : Integer := 512:
+   Speed : Integer := 512;
 
    --States
-   Forward : Boolean := True;
-   Backward : Boolean := False;
+   Forward_dir : Boolean := True;
+   Reverse_dir : Boolean := False;
    Sideways_R : Boolean := False;
    Sideways_L : Boolean := False;
    Diagonal_FR : Boolean := False;
@@ -55,7 +55,7 @@ begin
       Write (PIN_EN_ALL, Speed);
 
       --Simple Statemachine for testing movement
-      if Forward then
+      if Forward_dir then
          --Motor 1 (FL)
          Set (PIN_IN1, False);
          Set (PIN_IN2, True);
@@ -68,7 +68,7 @@ begin
          --Motor 4 (RR)
          Set (PIN_IN7, False);
          Set (PIN_IN8, True);
-      elsif Backward then
+      elsif Reverse_dir then
          --Motor 1 (FL)
          Set (PIN_IN1, True);
          Set (PIN_IN2, False);
