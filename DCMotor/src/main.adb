@@ -4,8 +4,7 @@ with MicroBit.Time;
 procedure Main is
    --Shared PWM (Direction can still be changed individually, and 1 motor can also be stopped)
    --Max simultaneous analog write=3
-   PIN_EN_FL_RR : constant Pin_Id := 0;
-   PIN_EN_FR_RL : constant Pin_Id := 1;
+   PIN_EN_ALL : constant Pin_Id := 0;
    --Motor 1 (FL)
    PIN_IN1 : constant Pin_Id := 11;
    PIN_IN2 : constant Pin_Id := 12;
