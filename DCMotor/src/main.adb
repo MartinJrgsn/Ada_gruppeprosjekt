@@ -20,7 +20,7 @@ procedure Main is
    PIN_IN8 : constant Pin_Id := 20;
 
    --Options
-   Speed : Integer := 512;
+   Speed : Analog_Value := 512;
 
    --States
    Forward_dir : Boolean := True;
