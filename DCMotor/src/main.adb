@@ -2,7 +2,8 @@ with MicroBit.IOs; use MicroBit.IOs;
 with MicroBit.Time;
 
 procedure Main is
-   --Shared PWM (Direction can still be changed individually, and 1 motor can also be stopped)
+   --Shared PWM (Direction and start/stop can still be changed individually)
+   --All motors, if they are engaged, will rotate at same RPM
    --Max simultaneous analog write=3
    PIN_EN_ALL : constant Pin_Id := 0;
    --Motor 1 (FL)
@@ -17,6 +18,9 @@ procedure Main is
    --Motor 3 (RR)
    PIN_IN7 : constant Pin_Id := 19;
    PIN_IN8 : constant Pin_Id := 20;
+
+   --Options
+   Speed : Integer := 512:
 
    --States
    Forward : Boolean := True;
@@ -46,6 +50,9 @@ begin
       --Motor 4 (RR)
       Set (PIN_IN7, False);
       Set (PIN_IN8, True);
+
+      --Default PWM voltage
+      Write (PIN_EN_ALL, Speed);
 
       --Simple Statemachine for testing movement
       if Forward then
@@ -184,12 +191,11 @@ begin
 
       --For loop for testing purposes.
       --(Fading LED to check wheter flash is successfull)
-      for Value in Analog_Value range 0 .. 256 loop
-         --Write (PIN_EN1, Value);
-         --Write (PIN_EN2, Value);
-         --Write (PIN_EN3, Value);
-         --Write (PIN_EN4, Value);
+      --for Value in Analog_Value range 0 .. 256 loop
+         --Write (0, Value);
+         --Write (1, Value);
+         --Write (2, Value);
          --MicroBit.Time.Delay_Ms(5);
-      end loop;
+      --end loop;
    end loop;
 end Main;
