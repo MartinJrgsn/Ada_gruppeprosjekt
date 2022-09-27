@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Locations>
+  <Project>
+    <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\DCMotor.gpr</vfs_file>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\DCMotor.gpr</vfs_project>
+      <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 26" line=" 10" >
+      <vfs_project>C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\DCMotor.gpr</vfs_project>
+      <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>C:\repos\VE3140\Ada_Drivers_Library\boards\MicroBit_v2\microbit_v2_zfp.gpr</vfs_project>
+      <vfs_file>C:\repos\VE3140\Ada_Drivers_Library\arch\ARM\Nordic\drivers\nrf_common\nrf-radio.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 19" line=" 319" >
+      <vfs_project>C:\repos\VE3140\Ada_Drivers_Library\boards\MicroBit_v2\microbit_v2_zfp.gpr</vfs_project>
+      <vfs_file>C:\repos\VE3140\Ada_Drivers_Library\arch\ARM\Nordic\drivers\nrf_common\nrf-radio.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
