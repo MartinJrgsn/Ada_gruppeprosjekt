@@ -27,6 +27,8 @@ procedure Main is
    Diagonal_FL : Boolean := False;
    Diagonal_RR : Boolean := False;
    Diagonal_RL : Boolean := False;
+   Rotate_CW_Center_Axis : Boolean := False;
+   Rotate_CCW_Center_Axis : Boolean := False;
 
 
 begin
@@ -150,8 +152,32 @@ begin
          --Motor 4 (RR)
          Set (PIN_IN7, True);
          Set (PIN_IN8, False);
-
-
+      elsif Rotate_CW_Center_Axis then
+         --Motor 1 (FL)
+         Set (PIN_IN1, False);
+         Set (PIN_IN2, True);
+         --Motor 2 (FR)
+         Set (PIN_IN3, True);
+         Set (PIN_IN4, False);
+         --Motor 3 (RL)
+         Set (PIN_IN5, False);
+         Set (PIN_IN6, True);
+         --Motor 4 (RR)
+         Set (PIN_IN7, True);
+         Set (PIN_IN8, False);
+      elsif Rotate_CCW_Center_Axis then
+         --Motor 1 (FL)
+         Set (PIN_IN1, True);
+         Set (PIN_IN2, False);
+         --Motor 2 (FR)
+         Set (PIN_IN3, False);
+         Set (PIN_IN4, True);
+         --Motor 3 (RL)
+         Set (PIN_IN5, True);
+         Set (PIN_IN6, False);
+         --Motor 4 (RR)
+         Set (PIN_IN7, False);
+         Set (PIN_IN8, True);
       end if;
 
 
