@@ -20,11 +20,11 @@ procedure Main is
    PIN_IN8 : constant Pin_Id := 20;
 
    --Options
-   Speed : Analog_Value := 512;
+   Speed : Analog_Value := 1023;
 
    --States
-   Forward_dir : Boolean := True;
-   Reverse_dir : Boolean := False;
+   Forward_dir : Boolean := False;
+   Reverse_dir : Boolean := True;
    Sideways_R : Boolean := False;
    Sideways_L : Boolean := False;
    Diagonal_FR : Boolean := False;
@@ -38,7 +38,7 @@ procedure Main is
 begin
    loop
       --Initial direction
-      --Motor 1 (FL)
+      --Motor 1 (FL)+
       Set (PIN_IN1, False);
       Set (PIN_IN2, True);
       --Motor 2 (FR)
@@ -191,11 +191,11 @@ begin
 
       --For loop for testing purposes.
       --(Fading LED to check wheter flash is successfull)
-      --for Value in Analog_Value range 0 .. 256 loop
-         --Write (0, Value);
+      --for Value in Analog_Value range 0 .. 1023 loop
+       --  Write (PIN_EN_ALL, Value);
          --Write (1, Value);
          --Write (2, Value);
-         --MicroBit.Time.Delay_Ms(5);
+       --  MicroBit.Time.Delay_Ms(2);
       --end loop;
    end loop;
 end Main;
