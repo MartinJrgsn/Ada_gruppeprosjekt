@@ -16,8 +16,8 @@ package body Motor_Controller is
       PIN_IN1 : constant Pin_Id := 6;
       PIN_IN2 : constant Pin_Id := 7;
       --Motor 2 (FR)
-      PIN_IN3 : constant Pin_Id := 2;
-      PIN_IN4 : constant Pin_Id := 3;
+      PIN_IN3 : constant Pin_Id := 8;
+      PIN_IN4 : constant Pin_Id := 9;
       --Motor 3 (RL)
       PIN_IN5 : constant Pin_Id := 12;
       PIN_IN6 : constant Pin_Id := 13;
@@ -70,7 +70,7 @@ package body Motor_Controller is
          set(PIN_IN8, not On);
          
          delay until Time_Now + Ada.Real_Time.Seconds(6);
-         --Sideways L
+         --Sideways R
          set(PIN_IN1, not On);
          set(PIN_IN2, On);
          set(PIN_IN3, On);
