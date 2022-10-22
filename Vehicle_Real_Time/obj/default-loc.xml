@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file />
+    <file_marker column=" 23" line=" 10" >
+      <vfs_project />
+      <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\Sensor_Control\Sensor_Control.gpr</vfs_file>
+    </file_marker>
+    <file_marker column=" 6" line=" 9" >
+      <vfs_project />
+      <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\Sensor_Control\src\main.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 20" line=" 3" >
+      <vfs_project />
+      <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\Sensor_Control\src\sensor_control.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 22" >
+      <vfs_project />
+      <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\Sensor_Control\src\sensor_control.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

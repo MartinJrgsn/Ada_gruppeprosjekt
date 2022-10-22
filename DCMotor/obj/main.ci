@@ -19,4 +19,6 @@ edge: { sourcename: "_ada_main" targetname: "microbit__ios__set" label: "C:\repo
 edge: { sourcename: "_ada_main" targetname: "microbit__ios__set" label: "C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb:80:10" }
 edge: { sourcename: "_ada_main" targetname: "microbit__ios__set" label: "C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb:82:10" }
 edge: { sourcename: "_ada_main" targetname: "microbit__ios__set" label: "C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb:83:10" }
+edge: { sourcename: "_ada_main" targetname: "microbit__ios__write" label: "C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb:195:10" }
+edge: { sourcename: "_ada_main" targetname: "microbit__ios__write" label: "C:\repos\VE3140\Ada_gruppeprosjekt\DCMotor\src\main.adb:196:10" }
 }

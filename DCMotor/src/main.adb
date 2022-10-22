@@ -191,11 +191,11 @@ begin
 
       --For loop for testing purposes.
       --(Fading LED to check wheter flash is successfull)
-      --for Value in Analog_Value range 0 .. 1023 loop
-       --  Write (PIN_EN_ALL, Value);
-         --Write (1, Value);
+      for Value in Analog_Value range 0 .. 1023 loop
+         Write (PIN_EN_ALL, Value);
+         Write (0, Value);
          --Write (2, Value);
        --  MicroBit.Time.Delay_Ms(2);
-      --end loop;
+      end loop;
    end loop;
 end Main;
