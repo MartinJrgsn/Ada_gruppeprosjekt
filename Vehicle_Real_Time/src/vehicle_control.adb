@@ -53,20 +53,20 @@ package body Vehicle_Control is
    end Control_Motors;
    
    Task body Control_LED is
-      Time_Now_2 : Ada.Real_Time.Time;
+      Time_Now : Ada.Real_Time.Time;
       PIN_LED : constant Pin_Id := 4;
    begin
       MicroBit.IOsForTasking.Set_Analog_Period_Us(20000);
       loop
-         Time_Now_2 := Ada.Real_Time.Clock;
+         Time_Now := Ada.Real_Time.Clock;
          Set(PIN_LED, False);
          --for Value in Analog_Value range 0 .. 256 loop
           --  Write(PIN_LED, Value);
           --  delay until Time_Now + Ada.Real_Time.Milliseconds(1000);
          --end loop;
-         delay until Time_Now_2 + Ada.Real_Time.Milliseconds(500);
+         delay until Time_Now + Ada.Real_Time.Milliseconds(500);
          Set(PIN_LED, True);
-         delay until Time_Now_2 + Ada.Real_Time.Milliseconds(1000);
+         delay until Time_Now + Ada.Real_Time.Milliseconds(1000);
       end loop;
    end Control_LED;
    
