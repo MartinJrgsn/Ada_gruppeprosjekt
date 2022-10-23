@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project>
-    <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\Motor_Controller\Motor_Controller.gpr</vfs_file>
+  <Project >
     <file_marker column=" 1" line=" 10" >
       <vfs_project>C:\repos\VE3140\Ada_gruppeprosjekt\Motor_Controller\Motor_Controller.gpr</vfs_project>
       <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\Motor_Controller\src\main.adb</vfs_file>
