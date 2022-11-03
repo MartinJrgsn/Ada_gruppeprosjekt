@@ -8,6 +8,8 @@
 
 *.exe
 
+*.xml
+
 b__main.adb
 b__main.ads
 display_letters-loc.xml
@@ -20,3 +22,7 @@ main.bin
 main.exe
 map.txt
 #DisplayLetters/src/main.adb
+
+Stage_One/obj
+Stage_One/obj/*
+obj/stage_one-loc.xml
