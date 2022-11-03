@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<Locations>
+  <Project>
+    <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\tasking_project_sense_think_act\tasking_project_sense_think_act.gpr</vfs_file>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\tasking_project_sense_think_act\tasking_project_sense_think_act.gpr</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 6" >
+      <vfs_project />
+      <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\tasking_project_sense_think_act\tasking_project_sense_think_act.gpr</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>C:\repos\VE3140\Ada_gruppeprosjekt\tasking_project_sense_think_act\tasking_project_sense_think_act.gpr</vfs_project>
+      <vfs_file>C:\repos\VE3140\Ada_gruppeprosjekt\tasking_project_sense_think_act\src\main.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
