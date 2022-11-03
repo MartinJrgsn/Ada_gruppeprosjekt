@@ -1,6 +1,7 @@
-procedure Main is
+procedure Main with Priority => 0 is
 
 begin
-   --  Insert code here.
-   null;
+   loop
+      null;
+   end loop;
 end Main;
