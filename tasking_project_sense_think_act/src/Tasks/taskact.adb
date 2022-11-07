@@ -11,15 +11,18 @@ package body TaskAct is
    begin
       
       SetupMotors;
+      SetupServo;
       
       loop
          myClock := Clock;
          
-         Drive(MotorDriver.GetDirection);
-         
-         delay until myClock + Milliseconds(50);  --random period, but faster than 20 ms is no use because Set_Analog_Period_Us(20000) !
-                                                  --faster is better but note the weakest link: if decisions in the thinking task come at 100ms and acting come at 20ms 
-                                                  --then no change is set in the acting task for at least 5x (and is wasting power to wake up and execute task!)
+         --Drive(MotorDriver.GetDirection);
+         Drive(Stop);
+         Rotate(ServoDriver.GetAngle);
+
+         delay until myClock + Milliseconds(500);  --random period, but faster than 20 ms is no use because Set_Analog_Period_Us(20000) !
+                                       --then no change is set in the acting task for at least 5x (and is wasting power to wake up and execute task!)
+      
       end loop;
    end act;
    
@@ -101,17 +104,18 @@ package body TaskAct is
             
    end Drive;
    
-   procedure Rotate(angle : Angles) is
+   procedure Rotate(Angle : Angles) is
       Instruction : ServoInstruction;
    begin
-      case angle is
+      case Angle is
          when Front_Back =>
             Instruction.ServoAngle := 90;
          when Left_Right =>
             Instruction.ServoAngle := 0;
       end case;
       
-      --ControlServo()
+      ControlServo(Instruction, ServoDriver.GetServoPins);
+      Put_Line ("Angle is: " & Angles'Image (Angle));
    end Rotate;
    
    procedure ControlMotor(Instruction : DriveInstruction; Pins: MotorControllerPins) is
