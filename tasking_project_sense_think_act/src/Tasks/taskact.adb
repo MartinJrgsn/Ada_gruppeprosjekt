@@ -1,5 +1,6 @@
 With Ada.Real_Time; use Ada.Real_Time;
 With MicroBit.Console; use MicroBit.Console;
+with MicroBit.Servos; use MicroBit.Servos;
 --Important: use Microbit.IOsForTasking for controlling pins as the timer used there is implemented as an protected object
 With MicroBit.IOsForTasking; use MicroBit.IOsForTasking;
 
@@ -23,6 +24,7 @@ package body TaskAct is
    end act;
    
    procedure SetupMotors is
+
       Pins : MotorControllerPins;
    begin
       Pins.LeftFrontSpeedEnA := 0; -- set you MB pins here. Note that some pins overlap with other M:B functions! See the Microbit package to inspect which function lives on which pin.
@@ -46,7 +48,17 @@ package body TaskAct is
      
       null;
    end;
+
+   procedure SetupServo is
+      Pins : ServoControllerPins;
+  begin
+      Pins.ServoEn := 11;
       
+      Set_Analog_Period_Us (20_000);
+      
+      null;
+   end;
+
    procedure Drive(Direction : Directions) is
       Instruction : DriveInstruction;
    begin
@@ -88,6 +100,8 @@ package body TaskAct is
       end Drive;
    
    procedure ControlMotor(Instruction : DriveInstruction; Pins: MotorControllerPins) is
+      
+
         
       begin
          --LEFT
