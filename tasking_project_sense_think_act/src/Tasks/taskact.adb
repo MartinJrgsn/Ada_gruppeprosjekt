@@ -51,8 +51,10 @@ package body TaskAct is
 
    procedure SetupServo is
       Pins : ServoControllerPins;
-  begin
+   begin
       Pins.ServoEn := 11;
+      
+      ServoDriver.SetServoPins(Pins);
       
       Set_Analog_Period_Us (20_000);
       
@@ -97,7 +99,20 @@ package body TaskAct is
         ControlMotor(Instruction, MotorDriver.GetMotorPins);
         Put_Line ("Direction is: " & Directions'Image (Direction));
             
-      end Drive;
+   end Drive;
+   
+   procedure Rotate(angle : Angles) is
+      Instruction : ServoInstruction;
+   begin
+      case angle is
+         when Front_Back =>
+            Instruction.ServoAngle := 90;
+         when Left_Right =>
+            Instruction.ServoAngle := 0;
+      end case;
+      
+      --ControlServo()
+   end Rotate;
    
    procedure ControlMotor(Instruction : DriveInstruction; Pins: MotorControllerPins) is
       
@@ -132,4 +147,12 @@ package body TaskAct is
          --MicroBit.IOs.Write (Pins.RightBackSpeedEnB, Instruction.RightBackSpeed); --disabled since same pin as above
    end ControlMotor;
    
+   procedure ControlServo(Instruction : ServoInstruction; Pins : ServoControllerPins) is
+
+   begin
+      MicroBit.Servos.Go(Pin      => Pins.ServoEn,
+                         Setpoint => Instruction.ServoAngle);
+   end ControlServo;
+
+
 end TaskAct;

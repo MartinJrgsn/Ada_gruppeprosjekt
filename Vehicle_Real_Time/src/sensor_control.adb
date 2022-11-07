@@ -15,28 +15,28 @@ package body Sensor_Control is
          Time_Now := Ada.Real_Time.Clock;
          
          
-         Go(10, 0);
+         Go(11, 0);
          delay until Time_now + Ada.Real_Time.Milliseconds(delay_counter);
          delay_counter := delay_counter + delay_interval;
-         Go(10, 45);
+         Go(11, 45);
          delay until Time_now + Ada.Real_Time.Milliseconds(delay_counter);
          delay_counter := delay_counter + delay_interval;
-         Go(10, 90);
+         Go(11, 90);
          delay until Time_now + Ada.Real_Time.Milliseconds(delay_counter);
          delay_counter := delay_counter + delay_interval;
-         Go(10, 135);
+         Go(11, 135);
          delay until Time_now + Ada.Real_Time.Milliseconds(delay_counter);
          delay_counter := delay_counter + delay_interval;
-         Go(10, 180);
+         Go(11, 180);
          delay until Time_now + Ada.Real_Time.Milliseconds(delay_counter);
          delay_counter := delay_counter + delay_interval;
-         Go(10, 135);
+         Go(11, 135);
          delay until Time_now + Ada.Real_Time.Milliseconds(delay_counter);
          delay_counter := delay_counter + delay_interval;
-         Go(10, 90);
+         Go(11, 90);
          delay until Time_now + Ada.Real_Time.Milliseconds(delay_counter);
          delay_counter := delay_counter + delay_interval;
-         Go(10, 45);
+         Go(11, 45);
          delay until Time_now + Ada.Real_Time.Milliseconds(delay_counter);
          delay_counter := delay_counter + delay_interval;
          
