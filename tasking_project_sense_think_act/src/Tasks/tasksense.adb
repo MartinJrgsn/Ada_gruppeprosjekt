@@ -25,7 +25,8 @@ package body TaskSense is
          Brain.SetMeasurementSensor1 (Integer'Value(Distance'Image)); -- random value, hook up a sensor here!
          
          Distance_2 := Read;
-         --Put_Line ("Read sensor 2" & Distance_2_cm'Image(Distance_2));
+         --Legger inn ny kommentar
+         Put_Line ("Read sensor 2" & Distance_2_cm'Image(Distance_2));
          Brain.SetMeasurementSensor2 (Integer'Value(Distance_2'Image));
             
          delay until myClock + Milliseconds(200); --random period
