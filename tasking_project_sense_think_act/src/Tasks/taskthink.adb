@@ -24,14 +24,14 @@ package body TaskThink is
          
          --if ServoDriver.GetAngle = Front_Back then
          
-         --ServoDriver.SetAngle (Left_Right);
+         ServoDriver.SetAngle (Left_Right);
          --end if;
          
-         --delay until myClock + Milliseconds(100);
+         delay until myClock + Milliseconds(100);
          
          
 
-         --ServoDriver.SetAngle (Front_Back);
+         ServoDriver.SetAngle (Front_Back);
          --delay until myClock + Milliseconds(200);
          -- leser distance
          -- ny delay for å prosesere lesing av distance
