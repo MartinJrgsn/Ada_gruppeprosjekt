@@ -26,3 +26,4 @@ map.txt
 Stage_One/obj
 Stage_One/obj/*
 obj/stage_one-loc.xml
+*/obj
