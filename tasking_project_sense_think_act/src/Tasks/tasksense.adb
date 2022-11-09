@@ -7,8 +7,6 @@ package body TaskSense is
 
     task body sense is
       myClock : Time;
-      Distance : Distance_cm;
-      Distance_2 : Distance_2_cm;
    begin
       Ultrasonic.Setup(4,5);
       Ultrasonic_2.Setup(10,19);
@@ -20,14 +18,12 @@ package body TaskSense is
                            --When Worst Case Execution Time (WCET) is overrun so higher than your set period, see : https://www.sigada.org/ada_letters/dec2003/07_Puente_final.pdf
                            --In this template we put the responsiblity on the designer/developer.
          
-         Distance := Read;
-         Put_Line ("Read sensor 1" & Distance_cm'Image(Distance)); -- a console line delay the loop significantly
-         Brain.SetMeasurementSensor1 (Integer'Value(Distance'Image)); -- random value, hook up a sensor here!
          
-         Distance_2 := Read;
-         --Legger inn ny kommentar
-         Put_Line ("Read sensor 2" & Distance_2_cm'Image(Distance_2));
-         Brain.SetMeasurementSensor2 (Integer'Value(Distance_2'Image));
+         Brain.SetMeasurementSensor1 (Integer'Value(Ultrasonic.Read'Image)); -- random value, hook up a sensor here!
+         Put_Line ("Read sensor 1" & Integer'Image(Brain.GetMeasurementSensor1)); -- a console line delay the loop significantly
+         
+         Brain.SetMeasurementSensor2 (Integer'Value(Ultrasonic_2.Read'Image));
+         Put_Line ("Read sensor 2" & Integer'Image(Brain.GetMeasurementSensor2));
             
          delay until myClock + Milliseconds(200); --random period
       end loop;
