@@ -1,4 +1,5 @@
 with MyMotorDriver; use MyMotorDriver;
+with MyServoDriver; use MyServoDriver;
 with MyBrain; use MyBrain;
 
 package TaskThink is
