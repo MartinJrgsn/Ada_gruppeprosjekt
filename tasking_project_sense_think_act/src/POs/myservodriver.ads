@@ -3,14 +3,14 @@ With MicroBit.IOsForTasking; use MicroBit.IOsForTasking;
 
 package MyServoDriver is
    
-   type Angles is (Front_Back, Left_Right);
+   type Angles is (Front_Back, Left_Right, Stop);
 
    type ServoInstruction is record
       ServoAngle : Servo_Set_Point;
    end record;
    
    type ServoControllerPins is record
-           ServoEn : Pin_Id;
+      ServoEn : Pin_Id;
    end record;
    
    protected ServoDriver is

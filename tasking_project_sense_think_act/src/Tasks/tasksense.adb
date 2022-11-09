@@ -21,10 +21,11 @@ package body TaskSense is
                            --In this template we put the responsiblity on the designer/developer.
          
          Distance := Read;
-         Put_Line ("Read" & Distance_cm'Image(Distance)); -- a console line delay the loop significantly
+         Put_Line ("Read sensor 1" & Distance_cm'Image(Distance)); -- a console line delay the loop significantly
          Brain.SetMeasurementSensor1 (Integer'Value(Distance'Image)); -- random value, hook up a sensor here!
          
          Distance_2 := Read;
+         --Put_Line ("Read sensor 2" & Distance_2_cm'Image(Distance_2));
          Brain.SetMeasurementSensor2 (Integer'Value(Distance_2'Image));
             
          delay until myClock + Milliseconds(200); --random period

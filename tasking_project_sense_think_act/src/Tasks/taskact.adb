@@ -48,7 +48,7 @@ package body TaskAct is
       
       --For example set the PWM period, as you only need to do this once
       Set_Analog_Period_Us (20_000); --20 ms = 50 Hz, typical for many actuators. You can change this, check the motor behavior with an oscilloscope.
-     
+                         
       null;
    end;
 
@@ -112,6 +112,8 @@ package body TaskAct is
             Instruction.ServoAngle := 90;
          when Left_Right =>
             Instruction.ServoAngle := 0;
+         when Stop =>
+            null;
       end case;
       
       ControlServo(Instruction, ServoDriver.GetServoPins);
@@ -154,8 +156,15 @@ package body TaskAct is
    procedure ControlServo(Instruction : ServoInstruction; Pins : ServoControllerPins) is
 
    begin
-      MicroBit.Servos.Go(Pin      => Pins.ServoEn,
-                         Setpoint => Instruction.ServoAngle);
+      if ServoDriver.GetAngle = Left_Right or ServoDriver.GetAngle = Front_Back then
+         MicroBit.Servos.Go(Pin => Pins.ServoEn, Setpoint => Instruction.ServoAngle);
+      end if;
+      
+      if ServoDriver.GetAngle = Stop then
+         MicroBit.Servos.Stop(Pin => Pins.ServoEn);
+      end if;
+
+
    end ControlServo;
 
 

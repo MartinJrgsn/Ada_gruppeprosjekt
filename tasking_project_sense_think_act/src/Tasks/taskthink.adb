@@ -20,13 +20,27 @@ package body TaskThink is
          end if;
          
          
-         ServoDriver.SetAngle (Front_Back);
-         delay until myClock + Milliseconds(100);  --random period
          
          
-         ServoDriver.SetAngle (Left_Right);
-         delay until myClock + Milliseconds(200);  --random period
+         --if ServoDriver.GetAngle = Front_Back then
          
+         --ServoDriver.SetAngle (Left_Right);
+         --end if;
+         
+         --delay until myClock + Milliseconds(100);
+         
+         
+
+         --ServoDriver.SetAngle (Front_Back);
+         --delay until myClock + Milliseconds(200);
+         -- leser distance
+         -- ny delay for å prosesere lesing av distance
+         --if (back) < 20 cm && front > 20 cm kjør frem
+         
+         
+         
+         -- ny rotering
+         delay until myClock + Milliseconds(200);
       end loop;
    end think;
 
