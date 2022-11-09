@@ -1,5 +1,6 @@
 With Ada.Real_Time; use Ada.Real_Time;
 With MicroBit.Console; use MicroBit.Console;
+with MicroBit.Servos; use MicroBit.Servos;
 --Important: use Microbit.IOsForTasking for controlling pins as the timer used there is implemented as an protected object
 With MicroBit.IOsForTasking; use MicroBit.IOsForTasking;
 
@@ -10,19 +11,23 @@ package body TaskAct is
    begin
       
       SetupMotors;
+      SetupServo;
       
       loop
          myClock := Clock;
          
-         Drive(MotorDriver.GetDirection);
-         
-         delay until myClock + Milliseconds(50);  --random period, but faster than 20 ms is no use because Set_Analog_Period_Us(20000) !
-                                                  --faster is better but note the weakest link: if decisions in the thinking task come at 100ms and acting come at 20ms 
-                                                  --then no change is set in the acting task for at least 5x (and is wasting power to wake up and execute task!)
+         --Drive(MotorDriver.GetDirection);
+         Drive(Stop);
+         Rotate(ServoDriver.GetAngle);
+
+         delay until myClock + Milliseconds(500);  --random period, but faster than 20 ms is no use because Set_Analog_Period_Us(20000) !
+                                       --then no change is set in the acting task for at least 5x (and is wasting power to wake up and execute task!)
+      
       end loop;
    end act;
    
    procedure SetupMotors is
+
       Pins : MotorControllerPins;
    begin
       Pins.LeftFrontSpeedEnA := 0; -- set you MB pins here. Note that some pins overlap with other M:B functions! See the Microbit package to inspect which function lives on which pin.
@@ -46,7 +51,19 @@ package body TaskAct is
      
       null;
    end;
+
+   procedure SetupServo is
+      Pins : ServoControllerPins;
+   begin
+      Pins.ServoEn := 11;
       
+      ServoDriver.SetServoPins(Pins);
+      
+      Set_Analog_Period_Us (20_000);
+      
+      null;
+   end;
+
    procedure Drive(Direction : Directions) is
       Instruction : DriveInstruction;
    begin
@@ -85,9 +102,25 @@ package body TaskAct is
         ControlMotor(Instruction, MotorDriver.GetMotorPins);
         Put_Line ("Direction is: " & Directions'Image (Direction));
             
-      end Drive;
+   end Drive;
+   
+   procedure Rotate(Angle : Angles) is
+      Instruction : ServoInstruction;
+   begin
+      case Angle is
+         when Front_Back =>
+            Instruction.ServoAngle := 90;
+         when Left_Right =>
+            Instruction.ServoAngle := 0;
+      end case;
+      
+      ControlServo(Instruction, ServoDriver.GetServoPins);
+      Put_Line ("Angle is: " & Angles'Image (Angle));
+   end Rotate;
    
    procedure ControlMotor(Instruction : DriveInstruction; Pins: MotorControllerPins) is
+      
+
         
       begin
          --LEFT
@@ -118,4 +151,12 @@ package body TaskAct is
          --MicroBit.IOs.Write (Pins.RightBackSpeedEnB, Instruction.RightBackSpeed); --disabled since same pin as above
    end ControlMotor;
    
+   procedure ControlServo(Instruction : ServoInstruction; Pins : ServoControllerPins) is
+
+   begin
+      MicroBit.Servos.Go(Pin      => Pins.ServoEn,
+                         Setpoint => Instruction.ServoAngle);
+   end ControlServo;
+
+
 end TaskAct;
