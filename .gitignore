@@ -20,3 +20,4 @@ main.bin
 main.exe
 map.txt
 #DisplayLetters/src/main.adb
+*/obj/*
