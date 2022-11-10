@@ -4,10 +4,10 @@ package body TaskThink is
 
   task body think is
       myClock : Time;
-      Rotate_Time : Integer := 100;
-      Read_Time : Integer := 60;
+      Rotate_Time : Integer := 150;
+      Read_Time : Integer := 100;
       
-      Stop_Distance : Integer := 20;
+      --Stop_Distance : Integer := 20;
       Ignore_Distance : Integer := 30;
       
       
@@ -44,6 +44,8 @@ package body TaskThink is
          Distance_Left := Brain.GetMeasurementSensor1;
          Distance_Right := Brain.GetMeasurementSensor2;
          delay until myClock + Milliseconds (2*Rotate_Time + 2*Read_Time); -- The time it takes to read and overwrite previous Distance Front & Back
+         
+         
          
       end loop;
    end think;

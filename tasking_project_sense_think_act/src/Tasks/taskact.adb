@@ -209,7 +209,7 @@ package body TaskAct is
         end case;
       
         ControlMotor(Instruction, MotorDriver.GetMotorPins);
-        Put_Line ("Direction is: " & Directions'Image (Direction));
+        --Put_Line ("Direction is: " & Directions'Image (Direction));
             
    end Drive;
    
@@ -226,7 +226,7 @@ package body TaskAct is
       end case;
       
       ControlServo(Instruction, ServoDriver.GetServoPins);
-      Put_Line ("Angle is: " & Angles'Image (Angle));
+      --Put_Line ("Angle is: " & Angles'Image (Angle));
    end Rotate;
    
    procedure ControlMotor(Instruction : DriveInstruction; Pins: MotorControllerPins) is
