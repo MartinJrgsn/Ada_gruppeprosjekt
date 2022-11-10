@@ -127,6 +127,70 @@ package body TaskAct is
             Instruction.RightBackSpeed := 512;
             Instruction.RightBackPin1 := False;
             Instruction.RightBackPin2 := not Instruction.RightBackPin1;
+            
+         when DiagonalFR => 
+            Instruction.LeftFrontSpeed := 512;
+            Instruction.LeftFrontPin1 := True;
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftBackSpeed := 0;  
+            Instruction.LeftBackPin1 := True;
+            Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
+           
+            Instruction.RightFrontSpeed := 0; 
+            Instruction.RightFrontPin1 := True;
+            Instruction.RightFrontPin2 := not Instruction.RightFrontPin1; 
+            Instruction.RightBackSpeed := 512;
+            Instruction.RightBackPin1 := True;
+            Instruction.RightBackPin2 := not Instruction.RightBackPin1;
+            
+         when DiagonalFL => 
+            Instruction.LeftFrontSpeed := 0;
+            Instruction.LeftFrontPin1 := True;
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftBackSpeed := 512;  
+            Instruction.LeftBackPin1 := True;
+            Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
+           
+            Instruction.RightFrontSpeed := 512; 
+            Instruction.RightFrontPin1 := True;
+            Instruction.RightFrontPin2 := not Instruction.RightFrontPin1; 
+            Instruction.RightBackSpeed := 0;
+            Instruction.RightBackPin1 := True;
+            Instruction.RightBackPin2 := not Instruction.RightBackPin1;
+
+         when DiagonalBL => 
+            Instruction.LeftFrontSpeed := 512;
+            Instruction.LeftFrontPin1 := False;
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftBackSpeed := 0;  
+            Instruction.LeftBackPin1 := True;
+            Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
+           
+            Instruction.RightFrontSpeed := 0; 
+            Instruction.RightFrontPin1 := True;
+            Instruction.RightFrontPin2 := not Instruction.RightFrontPin1; 
+            Instruction.RightBackSpeed := 512;
+            Instruction.RightBackPin1 := False;
+            Instruction.RightBackPin2 := not Instruction.RightBackPin1;
+            
+         when DiagonalFL => 
+            Instruction.LeftFrontSpeed := 0;
+            Instruction.LeftFrontPin1 := True;
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftBackSpeed := 512;  
+            Instruction.LeftBackPin1 := False;
+            Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
+           
+            Instruction.RightFrontSpeed := 512; 
+            Instruction.RightFrontPin1 := False;
+            Instruction.RightFrontPin2 := not Instruction.RightFrontPin1; 
+            Instruction.RightBackSpeed := 0;
+            Instruction.RightBackPin1 := True;
+            Instruction.RightBackPin2 := not Instruction.RightBackPin1;
+
+         
+
+            
 
          when Stop => 
             Instruction.LeftFrontSpeed := 0;

@@ -3,7 +3,7 @@ With MicroBit.IOsForTasking; use MicroBit.IOsForTasking; -- we only depend on th
 
 package MyMotorDriver is
 
-   type Directions is (Forward, Backward, Rightward, Leftward, Stop); --only two are implemented but many configuration are possible with mecanum wheels
+   type Directions is (Forward, Backward, Rightward, Leftward, Stop, DiagonalFR, DiagonalFL, DiagonalBR, DiagonalBL); --only two are implemented but many configuration are possible with mecanum wheels
    
    type DriveInstruction is record
            LeftFrontSpeed: Analog_Value;
