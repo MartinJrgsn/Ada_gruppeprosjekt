@@ -20,10 +20,10 @@ package body TaskSense is
          
          
          Brain.SetMeasurementSensor1 (Integer'Value(Ultrasonic.Read'Image)); -- random value, hook up a sensor here!
-         Put_Line ("Read sensor 1" & Integer'Image(Brain.GetMeasurementSensor1)); -- a console line delay the loop significantly
+         --Put_Line ("Read sensor 1" & Integer'Image(Brain.GetMeasurementSensor1)); -- a console line delay the loop significantly
          
          Brain.SetMeasurementSensor2 (Integer'Value(Ultrasonic_2.Read'Image));
-         Put_Line ("Read sensor 2" & Integer'Image(Brain.GetMeasurementSensor2));
+         --Put_Line ("Read sensor 2" & Integer'Image(Brain.GetMeasurementSensor2));
             
          delay until myClock + Milliseconds(200); --random period
       end loop;
