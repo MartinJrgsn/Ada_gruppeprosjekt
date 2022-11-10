@@ -173,7 +173,7 @@ package body TaskAct is
             Instruction.RightBackPin1 := False;
             Instruction.RightBackPin2 := not Instruction.RightBackPin1;
             
-         when DiagonalFL => 
+         when DiagonalBR => 
             Instruction.LeftFrontSpeed := 0;
             Instruction.LeftFrontPin1 := True;
             Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
