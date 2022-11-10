@@ -45,13 +45,6 @@ package body TaskThink is
          Distance_Right := Brain.GetMeasurementSensor2;
          delay until myClock + Milliseconds (2*Rotate_Time + 2*Read_Time); -- The time it takes to read and overwrite previous Distance Front & Back
          
-         if Distance_Left > Distance_Right and Distance_Left > Distance_Front then
-            MotorDriver.SetDirection(V => Leftward);
-         elsif Distance_Right > Distance_Left and Distance_Left > Distance_Front then
-            MotorDriver.SetDirection(V => Rightward);
-         end if;
-         delay until myClock + Milliseconds(Rotate_Time+Read_Time+60);
-           
       end loop;
    end think;
 
