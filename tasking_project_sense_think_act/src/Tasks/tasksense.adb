@@ -29,8 +29,8 @@ package body TaskSense is
          Brain.SetMeasurementSensor2 (Integer'Value(Ultrasonic_2.Read'Image));
          --Put_Line ("Read sensor 2" & Integer'Image(Brain.GetMeasurementSensor2));
          Elapsed_CPU := Clock - Time_Now_CPU;
-         Put_Line ("CPU time: " & To_Duration (Elapsed_CPU)'Image & " seconds");
-         delay until myClock + Milliseconds(200); --random period
+         --Put_Line ("Sense CPU time: " & To_Duration (Elapsed_CPU)'Image & " seconds");
+         delay until myClock + Milliseconds(80); --random period
       end loop;
    end sense;
 

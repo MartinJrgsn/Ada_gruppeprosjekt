@@ -1,52 +1,77 @@
 With Ada.Real_Time; use Ada.Real_Time;
+With MicroBit.Console; use MicroBit.Console;
+with Ada.Execution_Time; use Ada.Execution_Time;
 
 package body TaskThink is
 
   task body think is
       myClock : Time;
-      Rotate_Time : Integer := 150;
+      Time_Now_CPU : CPU_Time;
+      Elapsed_CPU : Time_Span;
+      Rotate_Time : Integer := 300;
       Read_Time : Integer := 100;
-      
-      --Stop_Distance : Integer := 20;
-      Ignore_Distance : Integer := 30;
-      
-      
+      Stop_Distance : Integer := 40;
+      Angle_direction : Boolean:= False;
       Distance_Front, Distance_Right, Distance_Back, Distance_Left : Integer := 0;
+      Turn_Around_Clock : time;
+      Turn_Around_Counter : Integer := 0;
    begin
       loop
          myClock := Clock;
+         Time_Now_CPU := Clock;
+         Elapsed_CPU := Time_Span_Zero;
 
-         --make a decision (could be wrapped nicely in a procedure)
-         -- If front is clear, drive front, if back is clear, drive back, etc.
-         
-         -- Rotating Front_Back, reading and overwriting distance variables
-         
-         ServoDriver.SetAngle(V => Front_Back);
-         delay until myClock + Milliseconds (Rotate_Time); -- The time it takes to rotate and stop
-         
-         Distance_Front := Brain.GetMeasurementSensor1;
-         Distance_Back := Brain.GetMeasurementSensor2;
-         
+         if Angle_direction then
+            ServoDriver.SetAngle(V => Left_Right);
+            delay until myClock + Milliseconds (Rotate_Time);
+            Distance_Right := Brain.GetMeasurementSensor1;
+            Distance_Left := Brain.GetMeasurementSensor2;
+            Angle_direction := False;
+         elsif not Angle_direction then
+            ServoDriver.SetAngle(V => Front_Back);
+            delay until myClock + Milliseconds (Rotate_Time);
+            Distance_Front := Brain.GetMeasurementSensor1;
+            Distance_Back := Brain.GetMeasurementSensor2;
+            Angle_direction := True;
+         end if;
+
          delay until myClock + Milliseconds (Rotate_Time+Read_Time); -- The time it takes to read and overwrite previous Distance Front & Back
          
-         if Distance_Front > Distance_Back and Distance_Front > Distance_Left then
-            MotorDriver.SetDirection(V => Forward);
-         elsif Distance_Back > Distance_Front and Distance_Back > Distance_Left then
+         
+         --minst sannsynlige først
+         if Distance_Front < Stop_Distance and Distance_Right < (Stop_Distance-10) then
+            MotorDriver.SetDirection(V => DiagonalBL);
+         elsif Distance_Front < Stop_Distance and Distance_Left < (Stop_Distance-10) then
+            MotorDriver.SetDirection(V => DiagonalBR);
+         elsif Distance_Back < Stop_Distance and Distance_Left < (Stop_Distance-10) then
+            MotorDriver.SetDirection(V => DiagonalFR);
+         elsif Distance_Back < Stop_Distance and Distance_Right < (Stop_Distance-10) then
+            MotorDriver.SetDirection(V => DiagonalFL);
+         elsif Distance_Front < Stop_Distance then
             MotorDriver.SetDirection(V => Backward);
+         elsif Distance_Back < Stop_Distance then
+            MotorDriver.SetDirection(V => Forward);
+            Turn_Around_Clock := Clock;
+         elsif Distance_Right < Stop_Distance then
+            MotorDriver.SetDirection(V => Leftward);
+         elsif Distance_Left < Stop_Distance then
+            MotorDriver.SetDirection(V => Rightward);
+         else
+            MotorDriver.SetDirection(V => Forward);
+            Turn_Around_Clock := Clock;
          end if;
+
+         if (Turn_Around_Clock - myClock) < Milliseconds(60) then
+            Turn_Around_Counter := Turn_Around_Counter + 1;
+            if Turn_Around_Counter mod 3 = 0 then
+               MotorDriver.SetDirection(V => RotateCCW);
+            end if;
+         end if;
+         
+         
+         Elapsed_CPU := Clock - Time_Now_CPU;
+         --Put_Line ("THINK: CPU time: " & To_Duration (Elapsed_CPU)'Image & " seconds");
          delay until myClock + Milliseconds(Rotate_Time+Read_Time+30);
-         
-         -- Rotating Front_Back; reading and overwriting distance variables.
-         
-         ServoDriver.SetAngle(V => Left_Right);
-         delay until myClock + Milliseconds (2*Rotate_Time + Read_Time); -- The time it takes to rotate and stop
-         
-         Distance_Left := Brain.GetMeasurementSensor1;
-         Distance_Right := Brain.GetMeasurementSensor2;
-         delay until myClock + Milliseconds (2*Rotate_Time + 2*Read_Time); -- The time it takes to read and overwrite previous Distance Front & Back
-         
-         
-         
       end loop;
    end think;
 
