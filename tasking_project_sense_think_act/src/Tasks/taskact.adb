@@ -9,32 +9,31 @@ package body TaskAct is
 
    task body act is
       myClock : Time;  
-      Time_Now_Stopwatch : Time;
-      Time_Now_CPU : CPU_Time;
-      Elapsed_Stopwatch : Time_Span;
-      Elapsed_CPU : Time_Span;
-   begin
-      
+      --Time_Now_Stopwatch : Time;
+      --Time_Now_CPU : CPU_Time;
+      --Elapsed_Stopwatch : Time_Span;
+      --Elapsed_CPU : Time_Span;
+   begin     
       SetupMotors;
       SetupServo;
-
-      
       loop
          myClock := Clock;
-         Time_Now_CPU := Clock;
-         Elapsed_Stopwatch := Time_Span_Zero;
-         Elapsed_CPU := Time_Span_Zero;
+         --Elapsed_Stopwatch := Time_Span_Zero;
+         --Elapsed_CPU := Time_Span_Zero;
+         --Time_Now_Stopwatch := Clock;
+         --Time_Now_CPU := Clock;
          
+         --Main operations for the act task
          Drive(MotorDriver.GetDirection);
-         --Drive(DiagonalBR);
          Rotate(ServoDriver.GetAngle);
-         Elapsed_CPU := Clock - Time_Now_CPU;
-         Elapsed_Stopwatch := Clock - Time_Now_Stopwatch;
-         --Put_Line ("ACT: CPU time: " & To_Duration (Elapsed_CPU)'Image & " seconds");
 
+         --Elapsed_CPU := Clock - Time_Now_CPU;
+         --Elapsed_Stopwatch := Clock - Time_Now_Stopwatch;
+         --Put_Line ("ACT: CPU time: " & To_Duration (Elapsed_CPU)'Image & " seconds");
+         --Put_Line ("ACT: Stopwatch time: " & To_Duration (Elapsed_Stopwatch)'Image & " seconds");
+         
          delay until myClock + Milliseconds(200);  --random period, but faster than 20 ms is no use because Set_Analog_Period_Us(20000) !
-                                       --then no change is set in the acting task for at least 5x (and is wasting power to wake up and execute task!)
-      
+                                                   --then no change is set in the acting task for at least 5x (and is wasting power to wake up and execute task!)
       end loop;
    end act;
    
@@ -88,7 +87,7 @@ package body TaskAct is
             Instruction.LeftBackPin1 := True;
             Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
            
-            Instruction.RightFrontSpeed := 300; -- the speed of right front wheel is equal to the left front wheel. For traditional steering (eg turn left) the speed of left wheel is slower than right wheel 
+            Instruction.RightFrontSpeed := 300;
             Instruction.RightFrontPin1 := True;
             Instruction.RightFrontPin2 := not Instruction.RightFrontPin1; 
             Instruction.RightBackSpeed := 300;
@@ -96,14 +95,14 @@ package body TaskAct is
             Instruction.RightBackPin2 := not Instruction.RightBackPin1;
             
          when Backward =>
-            Instruction.LeftFrontSpeed := 1023; -- speed is dutycycle between 0 and 100% => so a value between 0 and 1023
+            Instruction.LeftFrontSpeed := 1023;
             Instruction.LeftFrontPin1 := False;
-            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1;
             Instruction.LeftBackSpeed := 1023;  
             Instruction.LeftBackPin1 := False;
             Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
            
-            Instruction.RightFrontSpeed := 1023; -- the speed of right front wheel is equal to the left front wheel. For traditional steering (eg turn left) the speed of left wheel is slower than right wheel 
+            Instruction.RightFrontSpeed := 1023;
             Instruction.RightFrontPin1 := False;
             Instruction.RightFrontPin2 := not Instruction.RightFrontPin1; 
             Instruction.RightBackSpeed := 1023;
@@ -111,14 +110,14 @@ package body TaskAct is
             Instruction.RightBackPin2 := not Instruction.RightBackPin1;
             
          when Rightward =>
-            Instruction.LeftFrontSpeed := 512; -- speed is dutycycle between 0 and 100% => so a value between 0 and 1023
+            Instruction.LeftFrontSpeed := 512;
             Instruction.LeftFrontPin1 := True;
-            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1;
             Instruction.LeftBackSpeed := 512;  
             Instruction.LeftBackPin1 := False;
             Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
            
-            Instruction.RightFrontSpeed := 512; -- the speed of right front wheel is equal to the left front wheel. For traditional steering (eg turn left) the speed of left wheel is slower than right wheel 
+            Instruction.RightFrontSpeed := 512;
             Instruction.RightFrontPin1 := False;
             Instruction.RightFrontPin2 := not Instruction.RightFrontPin1; 
             Instruction.RightBackSpeed := 512;
@@ -126,14 +125,14 @@ package body TaskAct is
             Instruction.RightBackPin2 := not Instruction.RightBackPin1;
             
          when Leftward =>
-            Instruction.LeftFrontSpeed := 512; -- speed is dutycycle between 0 and 100% => so a value between 0 and 1023
+            Instruction.LeftFrontSpeed := 512;
             Instruction.LeftFrontPin1 := False;
-            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1;
             Instruction.LeftBackSpeed := 512;  
             Instruction.LeftBackPin1 := True;
             Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
            
-            Instruction.RightFrontSpeed := 512; -- the speed of right front wheel is equal to the left front wheel. For traditional steering (eg turn left) the speed of left wheel is slower than right wheel 
+            Instruction.RightFrontSpeed := 512;
             Instruction.RightFrontPin1 := True;
             Instruction.RightFrontPin2 := not Instruction.RightFrontPin1; 
             Instruction.RightBackSpeed := 512;
@@ -143,7 +142,7 @@ package body TaskAct is
          when DiagonalFR => 
             Instruction.LeftFrontSpeed := 512;
             Instruction.LeftFrontPin1 := True;
-            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1;
             Instruction.LeftBackSpeed := 512;  
             Instruction.LeftBackPin1 := False;
             Instruction.LeftBackPin2 := False;
@@ -158,7 +157,7 @@ package body TaskAct is
          when DiagonalFL => 
             Instruction.LeftFrontSpeed := 512;
             Instruction.LeftFrontPin1 := False;
-            Instruction.LeftFrontPin2 := False; -- the second pin is always the opposite of the first!
+            Instruction.LeftFrontPin2 := False;
             Instruction.LeftBackSpeed := 512;  
             Instruction.LeftBackPin1 := True;
             Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
@@ -173,7 +172,7 @@ package body TaskAct is
          when DiagonalBL => 
             Instruction.LeftFrontSpeed := 512;
             Instruction.LeftFrontPin1 := False;
-            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1;
             Instruction.LeftBackSpeed := 512;  
             Instruction.LeftBackPin1 := False;
             Instruction.LeftBackPin2 := False;
@@ -188,7 +187,7 @@ package body TaskAct is
          when DiagonalBR => 
             Instruction.LeftFrontSpeed := 512;
             Instruction.LeftFrontPin1 := False;
-            Instruction.LeftFrontPin2 := False; -- the second pin is always the opposite of the first!
+            Instruction.LeftFrontPin2 := False;
             Instruction.LeftBackSpeed := 512;  
             Instruction.LeftBackPin1 := False;
             Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
@@ -201,14 +200,14 @@ package body TaskAct is
             Instruction.RightBackPin2 := False;
             
          when RotateCCW => 
-            Instruction.LeftFrontSpeed := 768; -- speed is dutycycle between 0 and 100% => so a value between 0 and 1023
+            Instruction.LeftFrontSpeed := 768;
             Instruction.LeftFrontPin1 := False;
-            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1; -- the second pin is always the opposite of the first!
+            Instruction.LeftFrontPin2 := not Instruction.LeftFrontPin1;
             Instruction.LeftBackSpeed := 768;  
             Instruction.LeftBackPin1 := False;
             Instruction.LeftBackPin2 := not Instruction.LeftBackPin1;
            
-            Instruction.RightFrontSpeed := 768; -- the speed of right front wheel is equal to the left front wheel. For traditional steering (eg turn left) the speed of left wheel is slower than right wheel 
+            Instruction.RightFrontSpeed := 768;
             Instruction.RightFrontPin1 := True;
             Instruction.RightFrontPin2 := not Instruction.RightFrontPin1; 
             Instruction.RightBackSpeed := 768;
@@ -218,7 +217,7 @@ package body TaskAct is
          when Stop => 
             Instruction.LeftFrontSpeed := 0;
             Instruction.LeftFrontPin1 := False;
-            Instruction.LeftFrontPin2 := False; -- here the second pin is the same as pin 1 because when both are off (false) there is no power consumption (not tested this!)
+            Instruction.LeftFrontPin2 := False;
             Instruction.LeftBackSpeed := 0;
             Instruction.LeftBackPin1 := False;
             Instruction.LeftBackPin2 := False;

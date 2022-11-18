@@ -3,6 +3,7 @@ With MicroBit.IOsForTasking; use MicroBit.IOsForTasking;
 
 package MyServoDriver is
    
+   -- Add extra preset rotation positions here
    type Angles is (Front_Back, Left_Right, Stop);
 
    type ServoInstruction is record
@@ -21,6 +22,7 @@ package MyServoDriver is
       procedure SetServoPins (V : ServoControllerPins);
       procedure SetAngle (V : Angles);
    private
+      --Set start position of servo
       ServoAngle : Angles := Front_Back;
       Pins : ServoControllerPins;
    end ServoDriver;

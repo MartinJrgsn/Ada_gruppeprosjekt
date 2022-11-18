@@ -6,8 +6,12 @@ package body TaskThink is
 
   task body think is
       myClock : Time;
-      Time_Now_CPU : CPU_Time;
-      Elapsed_CPU : Time_Span;
+      --Time_Now_Stopwatch : Time;
+      --Time_Now_CPU : CPU_Time;
+      --Elapsed_Stopwatch : Time_Span;
+      --Elapsed_CPU : Time_Span;
+      
+      --Variables
       Rotate_Time : Integer := 300;
       Read_Time : Integer := 100;
       Stop_Distance : Integer := 40;
@@ -18,8 +22,10 @@ package body TaskThink is
    begin
       loop
          myClock := Clock;
-         Time_Now_CPU := Clock;
-         Elapsed_CPU := Time_Span_Zero;
+         --Elapsed_Stopwatch := Time_Span_Zero;
+         --Elapsed_CPU := Time_Span_Zero;
+         --Time_Now_Stopwatch := Clock;
+         --Time_Now_CPU := Clock;
 
          if Angle_direction then
             ServoDriver.SetAngle(V => Left_Right);
@@ -36,7 +42,6 @@ package body TaskThink is
          end if;
 
          delay until myClock + Milliseconds (Rotate_Time+Read_Time); -- The time it takes to read and overwrite previous Distance Front & Back
-         
          
          --minst sannsynlige først
          if Distance_Front < Stop_Distance and Distance_Right < (Stop_Distance-10) then
@@ -61,19 +66,22 @@ package body TaskThink is
             Turn_Around_Clock := Clock;
          end if;
 
+         --If setting direction to forward three times in short time, then rotate CCW
          if (Turn_Around_Clock - myClock) < Milliseconds(60) then
             Turn_Around_Counter := Turn_Around_Counter + 1;
             if Turn_Around_Counter mod 3 = 0 then
                MotorDriver.SetDirection(V => RotateCCW);
             end if;
          end if;
-         
-         
-         Elapsed_CPU := Clock - Time_Now_CPU;
+
+         --Elapsed_CPU := Clock - Time_Now_CPU;
+         --Elapsed_Stopwatch := Clock - Time_Now_Stopwatch;
          --Put_Line ("THINK: CPU time: " & To_Duration (Elapsed_CPU)'Image & " seconds");
+         --Put_Line ("THINK: Stopwatch time: " & To_Duration (Elapsed_Stopwatch)'Image & " seconds");
+         
          delay until myClock + Milliseconds(Rotate_Time+Read_Time+30);
       end loop;
+      
    end think;
-
-
+   
 end TaskThink;

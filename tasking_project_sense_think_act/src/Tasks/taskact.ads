@@ -10,7 +10,7 @@ package TaskAct is
    procedure Drive (direction : Directions);
    procedure ControlMotor(Instruction : DriveInstruction; Pins : MotorControllerPins);
    
-   --Servo for ultrasonic spinnamagikk
+   --Servo for ultrasonic sensors
    procedure SetupServo;
    procedure Rotate (angle : Angles);
    procedure ControlServo(Instruction : ServoInstruction; Pins : ServoControllerPins);
